@@ -58,7 +58,7 @@ function Header() {
     }
 
     setUser(JSON.parse(localStorage.getItem("profile")));
-  }, [location]);
+  });
 
   return (
     <>
@@ -138,7 +138,7 @@ function Header() {
       <div className={menu ? "block" : "hidden"}>
         <div className="fixed top-20 z-10 flex flex-col w-10 h-fit bg-white right-5 px-10 py-5 justify-center items-center space-y-5 rounded-md shadow-2xl">
           <button>
-            {location.pathname == "/posts" ? (
+            {location.pathname === "/posts" ? (
               <Link to="/form">
                 <GrAdd className="text-2xl " />
               </Link>
