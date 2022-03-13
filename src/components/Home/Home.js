@@ -12,7 +12,7 @@ function Home({ setCurrentId }) {
     if (!user) {
       navigate("/auth");
     }
-  }, []);
+  });
 
   return (
     <div>
