@@ -1,5 +1,5 @@
 import FileBase from "react-file-base64";
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
@@ -69,7 +69,7 @@ const Form = ({ currentId, setCurrentId }) => {
     } catch (error) {
       console.log(error.message);
       if (
-        error.message ==
+        error.message ===
         "Cannot read properties of undefined (reading 'length')"
       ) {
         setTagsCheck(false);

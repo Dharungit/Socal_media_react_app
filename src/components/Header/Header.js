@@ -111,7 +111,7 @@ function Header() {
             <FiSearch className="text-2xl" />
           </button>
           <button>
-            {location.pathname == "/posts" ? (
+            {location.pathname === "/posts" ? (
               <Link to="/form">
                 <GrAdd className="text-2xl " />
               </Link>
