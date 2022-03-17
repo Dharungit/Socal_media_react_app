@@ -25,9 +25,7 @@ function Header() {
 
   const logout = () => {
     dispatch({ type: actionType.LOGOUT });
-
     navigate("/auth");
-
     setUser(null);
   };
 
@@ -48,17 +46,22 @@ function Header() {
     }
   };
 
-  useEffect(() => {
+  const UserUpdater = () => {
     const token = user?.token;
 
     if (token) {
       const decodedToken = decode(token);
 
-      if (decodedToken.exp * 1000 < new Date().getTime()) logout();
+      if (decodedToken.exp * 1000 < new Date().getTime()) {
+        logout();
+      }
     }
 
     setUser(JSON.parse(localStorage.getItem("profile")));
-  });
+  };
+  useEffect(() => {
+    UserUpdater();
+  }, [location]);
 
   return (
     <>

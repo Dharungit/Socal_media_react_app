@@ -3,7 +3,9 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 import Input from "./Input";
-import {signin, signup} from "../../actions/auth"
+import { signin, signup } from "../../actions/auth";
+
+import { StageSpinner } from "react-spinners-kit";
 
 function Auth() {
   const dispatch = useDispatch();
@@ -18,13 +20,13 @@ function Auth() {
   };
   const [isSignup, setIsSignup] = useState(false);
   const [form, setForm] = useState(initialState);
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = (e) => {
+    setLoading(true);
     e.preventDefault();
-
     if (isSignup) {
       dispatch(signup(form, navigate));
-      
     } else {
       dispatch(signin(form, navigate));
     }
@@ -82,12 +84,19 @@ function Auth() {
                 type="password"
               />
             )}
-            <button
-              type="submit"
-              className="mt-4 mb-2 bg-black text-white w-full py-1 rounded-md"
-            >
-              {isSignup ? "Sign Up" : "Sign In"}
-            </button>
+            {!loading ? (
+              <button
+                type="submit"
+                className="mt-4 mb-2 bg-black text-white w-full py-1 rounded-md"
+              >
+                {isSignup ? "Sign Up" : "Sign In"}
+              </button>
+            ) : (
+              <div className="mt-4 mb-2 bg-black w-full text-white flex rounded-md justify-center items-center">
+                <div className="opacity-50 mr-2">Please wait...</div>
+                <StageSpinner color="#808080" className="opacity-50" />
+              </div>
+            )}
           </form>
         </div>
         <div>
