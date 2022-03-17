@@ -27,7 +27,7 @@ function App() {
     <div className="font-pop">
       <Router>
         <Routes>
-          <Route exact path="/" element={<Navigate to="/posts" />} />
+          <Route exact path="/" element={<Navigate to="/auth" />} />
           <Route
             exact
             path="/posts"
