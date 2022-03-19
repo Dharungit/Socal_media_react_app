@@ -36,7 +36,7 @@ function Header() {
         getPostsBySearch({ searchTitle, searchTags: searchTags.join(",") })
       );
     } else {
-      navigate("/");
+      navigate("/", { replace: true });
     }
   };
 
@@ -46,7 +46,7 @@ function Header() {
     }
   };
 
-  const UserUpdater = () => {
+  useEffect(() => {
     const token = user?.token;
 
     if (token) {
@@ -58,9 +58,6 @@ function Header() {
     }
 
     setUser(JSON.parse(localStorage.getItem("profile")));
-  };
-  useEffect(() => {
-    UserUpdater();
   }, [location]);
 
   return (
