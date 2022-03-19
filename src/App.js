@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { getPosts } from "./actions/posts";
 
 import {
   BrowserRouter as Router,
@@ -16,12 +14,7 @@ import PostDetails from "./components/postDetails/postDetails";
 
 function App() {
   const [currentId, setCurrentId] = useState(0);
-  const dispatch = useDispatch();
   const user = JSON.parse(localStorage.getItem("profile"));
-
-  useEffect(() => {
-    dispatch(getPosts());
-  }, [dispatch]);
 
   return (
     <div className="font-pop">

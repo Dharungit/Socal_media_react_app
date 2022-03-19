@@ -6,7 +6,7 @@ export const signin = (formData, navigate) => async (dispatch) => {
     const { data } = await api.signIn(formData);
 
     dispatch({ type: AUTH, data });
-    navigate("/");
+    navigate("/", { replace: true });
   } catch (error) {
     console.log(error.response.data.message);
   }
@@ -18,7 +18,7 @@ export const signup = (formData, navigate) => async (dispatch) => {
 
     dispatch({ type: AUTH, data });
 
-    navigate("/");
+    navigate("/", { replace: true });
   } catch (error) {
     console.log(error);
   }
